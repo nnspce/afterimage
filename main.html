@@ -145,65 +145,43 @@
         text-transform: uppercase;
     }
 
-
-    /*NEXT & PREV ARROWS*/
-
-    #prev,
-    #next {
-        color: #cccccc;
-        font-size: 25px;
-        padding: 13px 10px;
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        -ms-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-    }
-    #prev:hover,
-    #next:hover {
-        color: #7a7a7a;
-        font-size: 25px;
-        padding: 13px 10px;
-        cursor: pointer;
-    }
-    #next {
-        float: right;
-    }
-    #prev {
-        float: left;
-    }
-
-
     /*CHARACTER CARD GALLERY*/
     #gallery {
         position: relative;
         padding: 45px 0px 20px;
-        overflow-x: auto;
+        overflow-x: hidden;
         overflow-y: hidden;
-        height: 380px;
-        white-space: nowrap;
+        height: auto;
         margin: 0px 0px 25px 0px;
+        text-align: justify;
     }
     #gallery-track {
         position: relative;
         width: auto;
+        display: -webkit-flex; /* Safari */
+        -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        padding-right: -10px;
+        margin: -10px;
+        height: auto;
     }
     /*CHARACTER BOXES*/
     .cbox {
         position: relative;
-        height: 370px;
-        width: 175px;
-        display: inline-block;
+        height: 160px;
+        width: 160px;
+        flex: 0 0 0px;
+        margin: 11px 11.1px;
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -ms-transition: all 1s ease;
         transition: all 1s ease;
     }
-    .cbox:last-child {
-        margin-right: -2px;
-    }
     .cbox img {
-        height: 370px;
-        width: 175px;
+        height: 160px;
+        width: 160px;
         -webkit-filter: grayscale(100%);
         filter: grayscale(100%);
         -webkit-transition: all 1s ease;
@@ -213,11 +191,12 @@
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
     }
+    .cbox {}
     /*CHARACTER NAME*/
     .cname {
         position: absolute;
         height: 90px;
-        width: 195px;
+        width: 160px;
         right: 0;
         transform: rotate(-90deg) translate(0, -100%);
         transform-origin: 100% 0;
@@ -246,7 +225,7 @@
         height: 0px;
         bottom: 0px;
         border-style: solid;
-        border-width: 87.5px 87.5px 87.5px 87.5px;
+        border-width: 0px 0px 160px 160px;
         border-color: transparent transparent transparent transparent;
         z-index: 1;
         -webkit-transition: all 1s ease;
@@ -265,14 +244,14 @@
     /*CONTENT CARD TAB NAVIGATION*/
 
     .cfooter {
-        position: absolute;
-        top: -30px;
+        top: 30px;
         width: 895px;
         height: 17;
         z-index: 2;
         right: 0;
         left: -180;
         text-align: center;
+        margin: 15px 0 0 0;
     }
     .cfooter a {
         color: #dbdbdb;
@@ -283,25 +262,28 @@
     /*CONTENT CARDS*/
 
     .ccard {
-        position: relative;
         display: none;
-        background: rgba(255, 255, 255, 0.3);
-        width: 715px;
-        height: 370px;
+        opacity: 0;
+        background: rgb(236,237,236);
+        width: 100%;
+        height: 390px;
         padding: 0;
         vertical-align: top;
+        webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 0.5s;
+        animation-name: fadeIn;
+        animation-duration: 0.5s;
+    }
+    .ccontent {
+        position: relative;
+        width: 860px;
+        height: 340px;
+        margin: 0px auto;
+        display: none;
         -webkit-transition: all 1s ease;
         -moz-transition: all 1s ease;
         -ms-transition: all 1s ease;
         transition: all 1s ease;
-        transition-delay: 0s, 0s, 0.5s;
-    }
-    .ccontent {
-        position: relative;
-        width: 680px;
-        height: 340px;
-        margin: 15px auto;
-        display: none;
     }
 
 
@@ -309,12 +291,12 @@
 
     .cbio {
         position: relative;
-        width: 510px;
-        height: 305px;
+        width: 650px;
+        height: 340px;
     }
     .headline {
         position: relative;
-        width: 440px;
+        width: 650px;
         height: 80px;
     }
     .headline p {
@@ -325,7 +307,7 @@
         word-wrap: break-word;
         white-space: normal;
         overflow: hidden;
-        width: 440px;
+        width: 635px;
     }
     h2 {
         font-family: helvetica;
@@ -341,12 +323,12 @@
     }
     .flavorimg {
         position: absolute;
-        top: 0;
+        bottom: 0;
         right: 3px;
         width: 180px;
         height: 340px;
         background-position: bottom right;
-        background-size: 110%;
+        background-size: 100%;
         background-repeat: no-repeat;
         -webkit-filter: grayscale(100%);
         filter: grayscale(100%);
@@ -366,7 +348,7 @@
         white-space: normal;
         overflow-y: auto;
         overflow-x: hidden;
-        width: 450px;
+        width: 635px;
         padding-right: 22px;
     }
     /*GRID LINKS*/
@@ -418,7 +400,7 @@
     .cell1,
     .cell2 {
         height: auto;
-        width: 200px;
+        width: 300px;
         padding: 0 0 0 0;
         margin: 0;
         font-size: 14px;
@@ -494,7 +476,7 @@
     .connections {
         height: 340px;
         margin: 0px 0;
-        width: 450px;
+        width: 630px;
         padding-right: 40px;
         overflow-x: hidden;
         overflow-y: auto;
@@ -515,7 +497,7 @@
 
     footer {
         position: relative;
-        margin: 0px;
+        margin: 30px 0 0 0;
         padding: 0px;
         width: auto;
         height: 50px;
@@ -547,6 +529,7 @@
 
     /*CONTENT CARD*/
     .ccard.active {
+        opacity: 1;
         display: inline-block;
         margin: 0px 0px;
     }
@@ -559,7 +542,8 @@
     .cfooter a.active {
         color: #cccccc;
     }
-    /*CONNECTIONS NAV*/
+    /*CBOX & CONNECTIONS NAV*/
+    .cbox.active img,
     .con.active {
         -webkit-filter: grayscale(0%);
         filter: grayscale(0%);
@@ -634,7 +618,6 @@
     .cname:hover,
     .con:hover,
     .cbox:hover > img,
-    .flavorimg:hover,
     .square:hover {
         cursor: pointer;
     }
@@ -668,7 +651,6 @@
         -o-transform: scale(1.3);
         transform: scale(1.3);
     }
-    .flavorimg:hover,
     .con:hover {
         background-size: 100%;
     }
@@ -677,6 +659,26 @@
     .con:hover {
         -webkit-filter: grayscale(0%);
         filter: grayscale(0%);
+    }
+
+
+    /*ANIMATION KEYFRAMES*/
+
+    @-webkit-keyframes fadeIn  {
+        0% { opacity: 0; }
+        20% { opacity: 0; }
+        40% { opacity: 0.3; }
+        60% { opacity: 0.5; }
+        80% { opacity: 0.9; }
+        100% { opacity: 1; }
+    }
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        20% { opacity: 0; }
+        40% { opacity: 0.3; }
+        60% { opacity: 0.5; }
+        80% { opacity: 0.9; }
+        100% { opacity: 1; }
     }
 
 
@@ -758,6 +760,33 @@
 
       </header>
 
+      <footer>
+        <div id="legend">
+
+          <!--GROUP LEGEND-->
+          <!--The 'g#' in the 'square' class sets the color for the group
+          (see variables at the top of CSS).
+          The data-filter is for sorting on click. You can add several
+          groups to a link: group AND group, group OR group etc. You can
+          read more here: https://isotope.metafizzy.co/filtering.html
+          Adding multiple filters: https://nonspace.tumblr.com/post/166045257594/hi-im-using-your-page-theme-after-image-and-i -->
+
+          <div class="square" data-filter="*" style="background: #7a7a7a;">               all</div>
+          <div class="square g1" data-filter=".g1">group</div>
+          <div class="square g2" data-filter=".g2">group</div>
+          <div class="square g3" data-filter=".g3">group</div>
+          <div class="square g4" data-filter=".g4">group</div>
+          <div class="square g5" data-filter=".g5">group</div>
+          <!--ADDITIONAL GROUPS
+          <div class="square g6" data-filter=".g6">group</div>
+          <div class="square g7" data-filter=".g7">group</div>
+          <div class="square g8" data-filter=".g8">group</div>
+          <div class="square g9" data-filter=".g9">group</div>
+          <div class="square g10" data-filter=".g10">group</div>-->
+
+        </div><!--legend-->
+      </footer>
+
       <!--HOW TO ADD GROUPS-->
       <!--To add a group (g1-g5) you need to add the respective group as a
       second class to the cbox (class="cbox GROUPNUMBER").
@@ -793,17 +822,88 @@
           <div class="cname">
             <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
             change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
+            <span style="font-size: 45px;">
             FIRST <br />
             LASTN
             </span>
           </div> <!--cname-->
           <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
+
+          <img src="https://placehold.it/160x160"></img>
         </div> <!--cbox-->
 
+
+        <!--CHARACTER TWO-->
+
+        <div class="cbox g2" href="#c2">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER THREE-->
+
+        <div class="cbox g3" href="#c3">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER FOUR-->
+
+        <div class="cbox g4" href="#c4">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER FIVE-->
+
+        <div class="cbox g5" href="#c5">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER CARDS FIRST ROW-->
+
+        <!--CCARD ONE-->
 
         <div class="ccard" id="c1">
 
@@ -907,7 +1007,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent c1p2-->
@@ -975,24 +1075,7 @@
         </div> <!--ccard-->
 
 
-
-        <!--CHARACTER THREE-->
-
-        <div class="cbox g2" href="#c2">
-          <div class="cname">
-            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
-            change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
-            FIRST <br />
-            LASTN
-            </span>
-          </div> <!--cname-->
-          <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
-        </div> <!--cbox-->
-
+        <!--CCARD TWO-->
 
         <div class="ccard" id="c2">
 
@@ -1096,7 +1179,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -1164,24 +1247,7 @@
         </div> <!--ccard-->
 
 
-
-        <!--CHARACTER TWO-->
-
-        <div class="cbox g3" href="#c3">
-          <div class="cname">
-            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
-            change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
-            FIRST <br />
-            LASTN
-            </span>
-          </div> <!--cname-->
-          <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
-        </div> <!--cbox-->
-
+        <!--CCARD THREE-->
 
         <div class="ccard" id="c3">
 
@@ -1285,7 +1351,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -1354,23 +1420,8 @@
 
 
 
-        <!--CHARACTER FOUR-->
 
-        <div class="cbox g4" href="#c4">
-          <div class="cname">
-            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
-            change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
-            FIRST <br />
-            LASTN
-            </span>
-          </div> <!--cname-->
-          <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
-        </div> <!--cbox-->
-
+        <!--CCARD FOUR-->
 
         <div class="ccard" id="c4">
 
@@ -1474,7 +1525,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -1542,24 +1593,7 @@
         </div> <!--ccard-->
 
 
-
-        <!--CHARACTER FIVE-->
-
-        <div class="cbox g5" href="#c5">
-          <div class="cname">
-            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
-            change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
-            FIRST <br />
-            LASTN
-            </span>
-          </div> <!--cname-->
-          <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
-        </div> <!--cbox-->
-
+        <!--CCARD FIVE-->
 
         <div class="ccard" id="c5">
 
@@ -1663,7 +1697,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -1673,21 +1707,21 @@
 
              <!--CONNECTION IMAGES/NAVIGATION-->
              <div class="navcon">
-                <div class="con" href="#c5con1" style="background-image:
+                <div class="con" href="#c4con1" style="background-image:
                     url('http://placehold.it/84x84');"></div>
-                <div  class="con" href="#c5con2" style="background-image:
+                <div  class="con" href="#c4con2" style="background-image:
                     url('http://placehold.it/84x84');"></div>
-                <div class="con" href="#c5con3" style="background-image:
+                <div class="con" href="#c4con3" style="background-image:
                     url('http://placehold.it/84x84');"></div>
-                <div class="con" href="#c5con4" style="background-image:
+                <div class="con" href="#c4con4" style="background-image:
                     url('http://placehold.it/84x84');"></div>
-                <div class="con" href="#c5con5" style="background-image:
+                <div class="con" href="#c4con5" style="background-image:
                     url('http://placehold.it/84x84');"></div>
-                <div class="con" href="#c5con6" style="background-image:
+                <div class="con" href="#c4con6" style="background-image:
                     url('http://placehold.it/84x84');"></div>
-                <div class="con" href="#c5con7" style="background-image:
+                <div class="con" href="#c4con7" style="background-image:
                     url('http://placehold.it/50x50');"></div>
-                <div class="con" href="#c5con8" style="background-image:
+                <div class="con" href="#c4con8" style="background-image:
                     url('http://placehold.it/50x50');"></div>
              </div>
 
@@ -1738,19 +1772,90 @@
           <div class="cname">
             <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
             change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
+            <span style="font-size: 45px;">
             FIRST <br />
             LASTN
             </span>
           </div> <!--cname-->
           <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
+
+          <img src="https://placehold.it/160x160"></img>
         </div> <!--cbox-->
 
 
-        <div class="ccard" id="c6">
+        <!--CHARACTER SEVEN-->
+
+        <div class="cbox g3" href="#c7">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER EIGHT-->
+
+        <div class="cbox g4" href="#c8">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER NINE-->
+
+        <div class="cbox g5" href="#c9">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER TEN-->
+
+        <div class="cbox g2" href="#c10">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER CARD SECOND ROW-->
+
+        <!--CCARD SIX-->
+
+       <div class="ccard" id="c6">
 
           <!--INNER TAB NAVIGATION-->
           <div class="cfooter">
@@ -1852,7 +1957,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -1920,23 +2025,7 @@
         </div> <!--ccard-->
 
 
-
-        <!--CHARACTER SEVEN-->
-
-        <div class="cbox g3" href="#c7">
-          <div class="cname">
-            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
-            change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
-            FIRST <br />
-            LASTN
-            </span>
-          </div> <!--cname-->
-          <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
-        </div> <!--cbox-->
+        <!--CCARD SEVEN-->
 
 
         <div class="ccard" id="c7">
@@ -2041,7 +2130,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -2109,26 +2198,9 @@
         </div> <!--ccard-->
 
 
+        <!--CCARD EIGHT-->
 
-        <!--CHARACTER EIGHT-->
-
-        <div class="cbox g4" href="#c8">
-          <div class="cname">
-            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
-            change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
-            FIRST <br />
-            LASTN
-            </span>
-          </div> <!--cname-->
-          <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
-        </div> <!--cbox-->
-
-
-        <div class="ccard" id="c8">
+         <div class="ccard" id="c8">
 
           <!--INNER TAB NAVIGATION-->
           <div class="cfooter">
@@ -2230,7 +2302,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -2298,24 +2370,7 @@
         </div> <!--ccard-->
 
 
-
-        <!--CHARACTER NINE-->
-
-        <div class="cbox g5" href="#c9">
-          <div class="cname">
-            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
-            change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
-            FIRST <br />
-            LASTN
-            </span>
-          </div> <!--cname-->
-          <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
-        </div> <!--cbox-->
-
+        <!--CCARD NINE-->
 
         <div class="ccard" id="c9">
 
@@ -2419,7 +2474,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -2487,24 +2542,7 @@
         </div> <!--ccard-->
 
 
-
-        <!--CHARACTER TEN-->
-
-        <div class="cbox g2" href="#c10">
-          <div class="cname">
-            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
-            change the opacity of the names in the CSS-->
-            <span style="font-size: 55px;">
-            FIRST <br />
-            LASTN
-            </span>
-          </div> <!--cname-->
-          <div class="triangle"></div>
-          <!--The image is 175x370px but because it zooms to 105% ideally
-          you can use an image that's ~ 183.75x388.5-->
-          <img src="https://placehold.it/175x370"></img>
-        </div> <!--cbox-->
-
+        <!--CCARD TEN-->
 
         <div class="ccard" id="c10">
 
@@ -2608,7 +2646,7 @@
             <!--You can put another picture of your character or a flavour
             picture or whatever you like. Dimensions are: 165x340-->
             <div class="flavorimg" style="background-image:
-              url('https://placehold.it/180x340');">
+              url('https://placehold.it/165x340');">
             </div>
 
           </div> <!--ccontent-->
@@ -2677,40 +2715,1911 @@
 
 
 
+
+         <!--CHARACTER ELEVEN-->
+
+        <div class="cbox g2" href="#c11">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER TWELVE-->
+
+        <div class="cbox g3" href="#c12">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER THIRTEEN-->
+
+        <div class="cbox g4" href="#c13">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER FOURTREEN-->
+
+        <div class="cbox g5" href="#c14">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER FIFTEEN-->
+
+        <div class="cbox g2" href="#c15">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER CARD THIRD ROW-->
+
+        <!--CCARD ELEVEN-->
+
+        <div class="ccard" id="c11">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c11p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c11p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c11p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c11p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c11p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 165x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/165x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c11p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c11con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c11con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c11con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c11con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c11con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c11con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c11con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c11con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c11con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 12, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c11con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+        <!--CCARD TWELVE-->
+
+        <div class="ccard" id="c12">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c12p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c12p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c12p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c12p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c12p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 165x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/165x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c12p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c12con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c12con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c12con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c12con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c12con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c12con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c12con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c12con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c12con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 12, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c12con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+        <!--CCARD THIRTEEN-->
+
+        <div class="ccard" id="c13">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c13p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c13p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c13p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c13p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c13p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 165x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/165x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c13p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c13con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c13con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c13con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c13con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c13con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c13con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c13con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c13con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c13con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 13, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c13con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+        <!--CCARD FOURTEEN-->
+
+        <div class="ccard" id="c14">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c14p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c14p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c14p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c14p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c14p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 165x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/165x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c14p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c14con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c14con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c14con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c14con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c14con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c14con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c14con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c14con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c14con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 14, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c14con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+
+        <!--CCARD FIFTEEN-->
+
+        <div class="ccard" id="c15">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c15p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c15p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c15p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c15p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c15p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 165x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/165x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c15p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c15con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c15con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c15con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c15con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c15con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c15con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c15con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c15con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c15con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 15, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c15con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+
+
+         <!--CHARACTER SIXTEEN-->
+
+        <div class="cbox g2" href="#c16">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER SEVENTEEN-->
+
+        <div class="cbox g3" href="#c17">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER EIGHTTEEN-->
+
+        <div class="cbox g4" href="#c18">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER NINETEEN-->
+
+        <div class="cbox g5" href="#c19">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER TWENTY-->
+
+        <div class="cbox g2" href="#c20">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER CARD FOURTH ROW-->
+
+        <!--CHARACTER SIXTEEN-->
+
+        <div class="ccard" id="c16">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c16p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c16p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c16p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c16p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c16p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 165x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/165x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c16p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c16con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c16con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c16con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c16con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c16con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c16con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c16con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c16con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c16con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 16, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c16con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+
+        <!--CCARD SEVENTEEN-->
+
+        <div class="ccard" id="c17">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c17p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c17p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c17p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c17p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c17p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 175x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/175x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c17p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c17con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c17con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c17con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c17con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c17con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c17con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c17con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c17con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c17con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 17, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c17con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+
+        <!--CCARD EIGHTEEN-->
+
+        <div class="ccard" id="c18">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c18p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c18p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c18p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c18p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c18p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 185x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/185x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c18p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c18con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c18con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c18con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c18con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c18con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c18con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c18con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c18con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c18con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 18, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c18con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+
+        <!--CCARD NINETEEN-->
+
+        <div class="ccard" id="c19">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c19p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c19p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c19p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c19p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c19p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 195x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/195x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c19p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c19con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c19con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c19con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c19con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c19con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c19con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c19con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c19con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c19con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 19, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c19con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+
+        <!--CCARD TWENTY-->
+
+        <div class="ccard" id="c20">
+
+          <!--INNER TAB NAVIGATION-->
+          <div class="cfooter">
+            <a href="#c20p1" class="active">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c20p2">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+            <a href="#c20p3">
+                <i class="fa fa-stop" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="ccontent active" id="c20p1">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">short</span>bio</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <div class="clinks">
+              <!--You can customise these links as much as you like. You can               find more icons to suit your needs here:
+              http://fontawesome.io/icons/-->
+              <a href="#">
+                  <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-book" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pencil" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-music" aria-hidden="true"></i></a>
+              <a href="#">
+                  <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+
+            <div class="ctraits">
+            <!--span is needed for the style-->
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <span>+ positive trait</span><p />
+              <br />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+              <span>- negative trait</span><p />
+            </div><!--ctraits-->
+
+          </div><!--ccontent-->
+
+          <!--PAGE 2-->
+          <div class="ccontent" id="c20p2">
+            <div class="cbio">
+
+              <div class="headline">
+                <h2><span class="h2front">the</span>title</h2>
+                <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </div><!--headline-->
+
+              <div class="biocontent">
+
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> Full name:  <span> - </span> </li>
+                  <li> Nickname:   <span> - </span> </li>
+                  <li> Age:        <span> - </span> </li>
+                  <li> D.o.B:      <span> - </span> </li>
+                  <li> Gender:     <span> - </span> </li>
+                  <li> Pronouns:   <span> - </span> </li>
+                  <li> Sexuality:  <span> - </span> </li>
+                  <li> Species: <span> - </span></li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> Occupation:      <span> - </span> </li>
+                  <li> Nationality:     <span> - </span> </li>
+                  <li> Residence:       <span> - </span> </li>
+                  <li> Education:       <span> - </span> </li>
+                  <li> Height:          <span> - </span> </li>
+                  <li> Alignment:       <span> - </span> </li>
+                  <li> Jung Type:       <span> - </span> </li>
+                  <li> Affiliation:     <span> - </span></li>
+                </ul>
+
+              </div><!--biocontent-->
+
+            </div><!--cbio-->
+
+            <!--You can put another picture of your character or a flavour
+            picture or whatever you like. Dimensions are: 205x340-->
+            <div class="flavorimg" style="background-image:
+              url('https://placehold.it/205x340');">
+            </div>
+
+          </div> <!--ccontent-->
+
+          <!--PAGE 3-->
+          <div class="ccontent" id="c20p3">
+
+             <!--CONNECTION IMAGES/NAVIGATION-->
+             <div class="navcon">
+                <div class="con" href="#c20con1" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div  class="con" href="#c20con2" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c20con3" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c20con4" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c20con5" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c20con6" style="background-image:
+                    url('http://placehold.it/84x84');"></div>
+                <div class="con" href="#c20con7" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+                <div class="con" href="#c20con8" style="background-image:
+                    url('http://placehold.it/50x50');"></div>
+             </div>
+
+             <div class="cbio">
+               <div class="headline">
+                 <h2><span class="h2front">social</span>connections</h2>
+                 <p />Lorem ipsum dolor sit amet, consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore
+                 magna aliqua.
+               </div><!--headline-->
+
+               <div class="biocontent">
+
+                 <div class="connections active" id="c20con1">
+                   <span>Connection name :: </span>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do  eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                 </div><!--connections-->
+
+                 <!--ADD CONNECTION INFO-->
+                 <!--Add as many connection info text fields as you like. If
+                 you need less than 20, remove them from the navigation
+                 above as well. To add new info:
+                     copy the follow div .connections
+                     change the id to id="c#con# (replace hashtags with the                      right numbers.
+                     c# = card number, con# = connection number.
+
+                 Make sure only the first connection div has the class
+                 'active' see above.
+                 You can also change these to names but then you need to
+                 edit the 'href' in the navigation (.clinks .navcon) as well
+                 .-->
+
+                 <div class="connections" id="c20con2">
+                     <span>Connection Name :: </span> CONNECTIONS TEXT
+                 </div>
+
+               </div><!--biocontent-->
+             </div><!--cbio-->
+          </div> <!--ccontent-->
+
+        </div> <!--ccard-->
+
+
+
        </div> <!--gallery-track-->
       </section>
-
-      <footer>
-        <div id="legend">
-          <!--PREVIOUS ARROW-->
-          <div id="prev">
-              <i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-
-          <!--GROUP LEGEND-->
-          <!--The 'g#' in the 'square' class sets the color for the group
-          (see variables at the top of CSS).
-          The data-filter is for sorting on click. You can add several
-          groups to a link: group AND group, group OR group etc. You can
-          read more here: https://isotope.metafizzy.co/filtering.html
-          Adding multiple filters: https://nonspace.tumblr.com/post/166045257594/hi-im-using-your-page-theme-after-image-and-i -->
-          <div class="square" data-filter="*" style="background: #7a7a7a;">               all</div>
-          <div class="square g1" data-filter=".g1">group</div>
-          <div class="square g2" data-filter=".g2">group</div>
-          <div class="square g3" data-filter=".g3">group</div>
-          <div class="square g4" data-filter=".g4">group</div>
-          <div class="square g5" data-filter=".g5">group</div>
-          <!--ADDITIONAL GROUPS
-          <div class="square g6" data-filter=".g6">group</div>
-          <div class="square g7" data-filter=".g7">group</div>
-          <div class="square g8" data-filter=".g8">group</div>
-          <div class="square g9" data-filter=".g9">group</div>
-          <div class="square g10" data-filter=".g10">group</div>-->
-
-          <!--NEXT ARROW-->
-          <div id="next">
-              <i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-        </div><!--legend-->
-      </footer>
 
 
     </div><!--container-->
@@ -2728,6 +4637,7 @@
         });
 
 
+
         /*CBOX CARDS*/
         $('.cbox').on('click', function(e) {
 
@@ -2736,21 +4646,17 @@
 
             if ($('.ccard' + currentAttrValue).hasClass('active')) {
                 $('.ccard' + currentAttrValue).removeClass('active');
+                $(this).removeClass('active');
             }
             else {
                 window.location.hash = $(this).attr('href');
                 $('.ccard' + currentAttrValue).addClass('active').siblings('.ccard').removeClass('active');
+                $(this).addClass('active').siblings('.cbox').removeClass('active');
             }
 
             /*TRAIT COLOURS*/
             $(currentAttrValue).find('.ctraits, .cell1, .cell2').addClass(groupClass);
 
-            /*SCROLL LEFT*/
-            $('#gallery').animate({
-                scrollLeft: $(this).position().left
-            }, 800);
-
-            e.preventDefault();
         });
 
 
@@ -2825,37 +4731,36 @@
             e.preventDefault();
         });
 
+         /*FIX LEGEND ON SCROLL*/
 
-        //ARROW SCROLL//
-        var $boxes = $(".cbox"),
-            $slides = $('#gallery'),
-            pos = 0;
+        $(function($) {
+            function fixedLegend() {
+                if ($(window).scrollTop() > 190)
+                    $('footer').css({
+                       'position': 'fixed',
+                       'width': '100%',
+                       'z-index': '3',
+                       'margin': '0 auto',
+                       'left': '0',
+                       'background': 'rgba(255, 255, 255, 0.8)',
+                       'top': '0px'
+                    });
 
-        $("#next").on('click', function() {
-            var $nextBox = $boxes.first();
 
-            if ($boxes.length > ++pos) {
-                $nextBox = $($boxes[pos]);
-            } else(pos = 0)
 
-            $slides.animate({
-                scrollLeft: $nextBox.position().left - 4
-            }, 500);
-        });
+                else
+                    $('footer').css({
+                       'position': 'relative',
+                       'background': 'rgba(255, 255, 255, 0.3)',
+                       'margin': '30px 0 0 0',
+                       'top': 'auto'
+                    });
+            }
 
-        $("#prev").click(function() {
-            var $nextBox = $boxes.last();
+            $(window).scroll(fixedLegend);
+                fixedLegend();
+            });
 
-            if ($boxes.length > --pos && pos > -1) {
-                $nextBox = $($boxes[pos]);
-            } else(pos = $boxes.length - 1)
-
-            $slides.animate({
-                scrollLeft: $nextBox.position().left - 4
-            }, 500);
-        });
-
-        
         /*HASH SCRIPT*/
         var hash = $.trim(window.location.hash);
         if (hash) {
